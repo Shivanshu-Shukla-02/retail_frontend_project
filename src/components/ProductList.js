@@ -1,34 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import { fetchProducts } from "../api/productApi";
 
 const ProductList = () => {
+  const [products, setProducts] = useState([]);
 
-  const [products] = useState([
-    {
-      id: 1,
-      name: "iPhone 14",
-      price: 70000,
-      imageUrl: "https://via.placeholder.com/200"
-    },
-    {
-      id: 2,
-      name: "Samsung S23",
-      price: 65000,
-      imageUrl: "https://via.placeholder.com/200"
-    },
-    {
-      id: 3,
-      name: "Boat Headphones",
-      price: 2000,
-      imageUrl: "https://via.placeholder.com/200"
-    },
-    {
-      id: 4,
-      name: "Laptop",
-      price: 55000,
-      imageUrl: "https://via.placeholder.com/200"
-    }
-  ]);
+  useEffect(() => {
+    fetchProducts().then(res => setProducts(res.data));
+  }, []);
 
   return (
     <div className="container mt-3">

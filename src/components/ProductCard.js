@@ -1,34 +1,24 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
-import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
 
   return (
     <div className="col-md-3">
-      <div className="card shadow p-2">
+      <div className="card shadow p-3 text-center">
 
-        {/* PRODUCT DETAILS LINK */}
-        <Link to={`/product/${product.id}`}>
-          <img
-            src={product.imageUrl}
-            alt={product.name}
-            className="card-img-top"
-          />
-        </Link>
+        <h5>{product.name}</h5>
+        <p>Category: {product.category}</p>
+        <h6>₹ {product.price}</h6>
+        <p>Stock: {product.quantity}</p>
 
-        <div className="card-body">
-          <h5>{product.name}</h5>
-          <p>₹ {product.price}</p>
-
-          <button
-            className="btn btn-primary"
-            onClick={() => addToCart(product)}
-          >
-            Add to Cart
-          </button>
-        </div>
+        <button
+          className="btn btn-primary"
+          onClick={() => addToCart(product)}
+        >
+          Add to Cart
+        </button>
 
       </div>
     </div>

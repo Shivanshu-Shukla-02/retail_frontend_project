@@ -1,25 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const OrderHistory = () => {
 
-  const loggedInUserId = 1;   // dummy logged in user
+  const loggedInUserId = 1;
+  const [orders, setOrders] = useState([]);
 
-  const [orders] = useState([
-    {
-      id: 1,
-      userId: 1,
-      date: "20 Feb 2026",
-      total: 72000,
-      items: [{ name: "iPhone 14", qty: 1 }]
-    },
-    {
-      id: 2,
-      userId: 2,
-      date: "18 Feb 2026",
-      total: 65000,
-      items: [{ name: "Samsung S23", qty: 1 }]
-    }
-  ]);
+  useEffect(() => {
+    const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+    setOrders(storedOrders);
+  }, []);
 
   const userOrders = orders.filter(o => o.userId === loggedInUserId);
 

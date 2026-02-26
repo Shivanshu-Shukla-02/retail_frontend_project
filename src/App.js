@@ -8,6 +8,9 @@ import ProductDetails from "./pages/ProductDetails";
 import Checkout from "./pages/Checkout";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
+import Admin from "./pages/Admin";
+
+
 
 function App() {
   return (
@@ -18,12 +21,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
-
-          {/* NEW ROUTES */}
+          <Route path="/admin" element={<Admin />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/success" element={<Success />} />
           <Route path="/orders" element={<OrderHistory/>}/>
+          
         </Routes>
 
       </CartProvider>

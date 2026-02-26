@@ -1,13 +1,35 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 const Checkout = () => {
   const navigate = useNavigate();
+  const { cart } = useCart();
+
   const [form, setForm] = useState({ name: "", address: "" });
 
   const handleSubmit = e => {
     e.preventDefault();
-    navigate("/success");
+
+    if (cart.length === 0) {
+      alert("Cart empty");
+      return;
+    }
+
+    const newOrder = {
+      id: Date.now(),
+      userId: 1,
+      date: new Date().toDateString(),
+      total: cart.reduce((a, i) => a + i.price * i.qty, 0),
+      items: cart
+    };
+
+    const oldOrders = JSON.parse(localStorage.getItem("orders")) || [];
+    localStorage.setItem("orders", JSON.stringify([...oldOrders, newOrder]));
+
+    localStorage.removeItem("cart");
+
+    navigate("/orders");
   };
 
   return (
