@@ -8,11 +8,14 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-dark bg-dark">
       <div className="container">
-        <Link to="/" className="navbar-brand">Retail App</Link>
+        <Link to="/" className="navbar-brand">Retail Ordering Website</Link>
 
         <Link to="/cart" className="btn btn-warning">
           Cart ({cart.length})
         </Link>
+        <Link to="/orders" className="btn btn-info me-2">
+  Orders
+</Link>
       </div>
     </nav>
   );

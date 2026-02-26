@@ -7,7 +7,7 @@ const CartItem = ({ item }) => {
   return (
     <div className="card p-2 mb-2 d-flex flex-row align-items-center">
       <img
-        src={item.imageUrl}
+        //src={item.imageUrl}
         alt={item.name}
         style={{ width: "80px", height: "80px" }}
       />
